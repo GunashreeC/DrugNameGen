@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Name Generator - Result</title>
-  <link rel="stylesheet" type="text/css" href="print.css" media="print">
   <style>
     body {
       margin: 0;
       padding: 0;
+      background-color: #5EB6AB; 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -16,21 +16,10 @@
 
     .container {
       text-align: center;
-      padding: 60px;
+      padding: 100px;
       color: white;
       background-color: #5EB6AB; 
     }
-
-
-    .container_1 {
-      background-size: 55% 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 0;
-      color: white;
-      text-align: center;
-    }
-
 
     #printButton, #emailButton {
       background-color: #046f8b;
@@ -47,63 +36,118 @@
     #printButton:hover, #emailButton:hover {
       background-color: #046f8b;
     }
-    @media print {
-  body {
-    margin: 0; 
-    padding: 0;
-  }
-  #printable-content {
-    width: 6in; 
-    height: 4in; 
-  }
-}
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  .section {
+    width: 6in;
+    height: 4in;
+    background-image: url('Div.png'); /* Replace 'your-image.jpg' with the URL or path to your background image */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the background image */
+    box-sizing: border-box; /* Include padding in total width/height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .placeholder {
+    color: white; /* Placeholder text color */
+    font-size: 12px; /* Placeholder text size */
+    padding-left: 2%;
+    position: absolute;
+    top: 0; /* Adjust the value to move the placeholder higher or lower */
+    left: 0;
+    width: 3in;
+    height: 2in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media print {
+    body {
+      margin: 0; 
+      padding: 0;
+      background-color: white; /* Set background color for printing */
+    }
+    .container {
+      display: none; /* Hide container content for printing */
+    }
+    .section {
+      display: block !important; /* Ensure section is displayed for printing */
+      background-image: url('Div.png') !important; /* Specify the background image for printing */
+      background-size: cover !important; /* Ensure the background image covers the section */
+      background-position: center !important; /* Ensure the background image is centered */
+      background-repeat: no-repeat !important; /* Ensure the background image is not repeated */
+    }
+    .placeholder {
+      display: block !important; /* Ensure placeholder content is displayed for printing */
+    }
+    #printButton, #emailButton {
+      display: none; /* Hide print and email buttons for printing */
+    }
+  }
   </style>
 </head>
 
 <body>
   <div class="container">
     <h1 id="greeting">Hi!</h1>
-  
-    <div id="printable-content"class="container_1"></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+    <div class="section">
+      <div class="placeholder">
     <h2 id="generatedNames" style="background-color: #5a5a5a; display: inline-block;"></h2>
   </br>
+  
   </div>
+</div>
+</br></br></br>
   <button id="printButton">Print</button>
     <button id="emailButton">Email</button>
-</div>
-<script>
-  document.getElementById("printButton").addEventListener("click", function() {
-      var printWindow = window.open("print.html", "_blank");
-      printWindow.onload = function() {
-          printWindow.print();
-      };
-  });
-  </script>
-  <script>
-    const photoDataURL = localStorage.getItem('photoDataURL');
-    console.log('photoDataURL:', photoDataURL);
-    document.body.style.backgroundImage = "url('" + photoDataURL + "')";
-    document.querySelector('.container_1').style.backgroundImage = "url('" + photoDataURL + "')";
 
+
+  <script>
    
 
-    if (window.location.href.includes('second.html')) {
-      const greetingElement = document.getElementById('greeting');
-      const generatedNamesElement = document.getElementById('generatedNames');
-      const printButton = document.getElementById('printButton');
 
-      const username = localStorage.getItem('username');
-      const generatedFirstName = localStorage.getItem('generatedFirstName');
-      const generatedLastName = localStorage.getItem('generatedLastName');
+   if (window.location.href.includes('second.html')) {
+    const greetingElement = document.getElementById('greeting');
+    const generatedNamesElement = document.getElementById('generatedNames');
 
-      greetingElement.textContent = `Hi, ${username}!`;
-      generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
+    const username = localStorage.getItem('username');
+    const generatedFirstName = localStorage.getItem('generatedFirstName');
+    const generatedLastName = localStorage.getItem('generatedLastName');
 
-      document.getElementById("printButton").addEventListener("click", function() {
-      window.open("print.html", "_blank");
-      });
-    }
+    greetingElement.textContent = `Hi, ${username}!`;
+    generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
+
+    document.getElementById("printButton").addEventListener("click", function() {
+  // Get the HTML content of the section with the background image
+  var sectionContent = document.querySelector('.section').outerHTML;
+
+  // Create a new div element to hold the printed content
+  var printContainer = document.createElement('div');
+  printContainer.innerHTML = sectionContent;
+
+  // Set background image to the new div element
+  printContainer.querySelector('.section').style.backgroundImage = "url('Div.png')"; // Replace 'Div.png' with the path to your background image
+
+  // Replace the current body content with the section content including the background image
+  document.body.innerHTML = printContainer.innerHTML;
+
+  // Trigger the print dialog
+  window.print();
+
+  // Restore the original body content
+  document.body.innerHTML = originalContents;
+});
+
+  }
+
 
     const emailButton = document.getElementById('emailButton');
 
