@@ -1,0 +1,8 @@
+@media print {
+    body {
+        width: 6in;
+        height: 4in;
+        margin: 0;
+        padding: 0;
+    }
+}

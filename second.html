@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Generator - Result</title>
+  <link rel="stylesheet" type="text/css" href="print.css" media="print">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      text-align: center;
+      padding: 60px;
+      color: white;
+      background-color: #5EB6AB; 
+    }
+
+
+    .container_1 {
+      background-size: 55% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 0;
+      color: white;
+      text-align: center;
+    }
+
+
+    #printButton, #emailButton {
+      background-color: #046f8b;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+      align-items: center;
+    }
+
+    #printButton:hover, #emailButton:hover {
+      background-color: #046f8b;
+    }
+    @media print {
+  body {
+    margin: 0; 
+    padding: 0;
+  }
+  #printable-content {
+    width: 6in; 
+    height: 4in; 
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="greeting">Hi!</h1>
+  
+    <div id="printable-content"class="container_1"></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+    <h2 id="generatedNames" style="background-color: #5a5a5a; display: inline-block;"></h2>
+  </br>
+  </div>
+  <button id="printButton">Print</button>
+    <button id="emailButton">Email</button>
+</div>
+<script>
+  document.getElementById("printButton").addEventListener("click", function() {
+      var printWindow = window.open("print.html", "_blank");
+      printWindow.onload = function() {
+          printWindow.print();
+      };
+  });
+  </script>
+  <script>
+    const photoDataURL = localStorage.getItem('photoDataURL');
+    console.log('photoDataURL:', photoDataURL);
+    document.body.style.backgroundImage = "url('" + photoDataURL + "')";
+    document.querySelector('.container_1').style.backgroundImage = "url('" + photoDataURL + "')";
+
+   
+
+    if (window.location.href.includes('second.html')) {
+      const greetingElement = document.getElementById('greeting');
+      const generatedNamesElement = document.getElementById('generatedNames');
+      const printButton = document.getElementById('printButton');
+
+      const username = localStorage.getItem('username');
+      const generatedFirstName = localStorage.getItem('generatedFirstName');
+      const generatedLastName = localStorage.getItem('generatedLastName');
+
+      greetingElement.textContent = `Hi, ${username}!`;
+      generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
+
+      document.getElementById("printButton").addEventListener("click", function() {
+      window.open("print.html", "_blank");
+      });
+    }
+
+    const emailButton = document.getElementById('emailButton');
+
+    emailButton.addEventListener('click', function() {
+        const generatedFirstName = localStorage.getItem('generatedFirstName');
+        const generatedLastName = localStorage.getItem('generatedLastName');
+
+        const subject = encodeURIComponent('Name Generator Result');
+        const body = encodeURIComponent(`Hi there! Here is the result of the name generator: ${generatedFirstName} ${generatedLastName}`);
+
+        // Create the mailto link
+        const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+
+        // Open the default email client
+        window.location.href = mailtoLink;
+    });
+    
+  </script>
+  
+</body>
+</html>
