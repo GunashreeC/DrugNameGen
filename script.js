@@ -69,10 +69,15 @@ function generateNames() {
     'Trisenox','Tylex',
 
     'Vargatef','Vectibix','Velcade','Vemurafenib', 'Venetoclax ','Vesanoid','Vidaza','Vinblastine','Vincristine','Vinorelbine','Votrient',
-
     
+    'Xalkori','Xeloda','Xgeva','Xtandi',
 
-  ];
+    'Yervoy','Yondelis',
+    
+    'Zanosar','Zelboraf','Zoladex','Zometa','Zomorph','Zydelig','Zytiga'
+
+  ]; 
+  
     const randomIndex = Math.floor(Math.random() * drugNames.length);
     return drugNames[randomIndex];
   }
