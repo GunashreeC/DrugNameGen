@@ -46,7 +46,7 @@ body {
   .section {
     width: 6in;
     height: 4in;
-    background-image: url('Div.png'); /* Replace 'your-image.jpg' with the URL or path to your background image */
+    background-image: url('Make Your Own Drug Name1.png'); /* Replace 'your-image.jpg' with the URL or path to your background image */
     background-size: cover; /* Cover the entire section */
     background-position: center; /* Center the background image */
     box-sizing: border-box;
@@ -58,12 +58,12 @@ body {
   .placeholder {
     color: white; /* Placeholder text color */
     font-size: 12px; /* Placeholder text size */
-    padding-left: 2%;
+    padding-left: 1%;
     position: absolute;
     top: 0; /* Adjust the value to move the placeholder higher or lower */
     left: 0;
     width: 3in;
-    height: 2in;
+    height: 1in;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,15 +72,15 @@ body {
   @media print {
     body {
       margin: 0; 
-      padding: 0;
-      background-color: white; /* Set background color for printing */
+      padding: 0; 
+      background: none;/* Set background color for printing */
     }
     .container {
       display: none; /* Hide container content for printing */
     }
     .section {
       display: block !important; /* Ensure section is displayed for printing */
-      background-image: url('Div.png') !important; /* Specify the background image for printing */
+      background-image: url('Make Your Own Drug Name1.png') !important; /* Specify the background image for printing */
       background-size: cover !important; /* Ensure the background image covers the section */
       background-position: center !important; /* Ensure the background image is centered */
       background-repeat: no-repeat !important; /* Ensure the background image is not repeated */
@@ -113,38 +113,44 @@ body {
   <script>
    
    if (window.location.href.includes('second.html')) {
-    const greetingElement = document.getElementById('greeting');
-    const generatedNamesElement = document.getElementById('generatedNames');
+  const greetingElement = document.getElementById('greeting');
+  const generatedNamesElement = document.getElementById('generatedNames');
 
-    const username = localStorage.getItem('username');
-    const generatedFirstName = localStorage.getItem('generatedFirstName');
-    const generatedLastName = localStorage.getItem('generatedLastName');
+  const username = localStorage.getItem('username');
+  const generatedFirstName = localStorage.getItem('generatedFirstName');
+  const generatedLastName = localStorage.getItem('generatedLastName');
 
-    greetingElement.textContent = `Hi, ${username}!`;
-    generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
+  greetingElement.textContent = `Hi, ${username}!`;
+  generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
 
-    document.getElementById("printButton").addEventListener("click", function() {
-  // Get the HTML content of the section with the background image
-  var sectionContent = document.querySelector('.section').outerHTML;
+  document.getElementById("printButton").addEventListener("click", function() {
+    // Get the HTML content of the section with the background image
+    var sectionContent = document.querySelector('.section').outerHTML;
 
-  // Create a new div element to hold the printed content
-  var printContainer = document.createElement('div');
-  printContainer.innerHTML = sectionContent;
+    // Create a new div element to hold the printed content
+    var printContainer = document.createElement('div');
+    printContainer.innerHTML = sectionContent;
 
-  // Set background image to the new div element
-  printContainer.querySelector('.section').style.backgroundImage = "url('Div.png')"; // Replace 'Div.png' with the path to your background image
+    // Set background image to the new div element
+    printContainer.querySelector('.section').style.backgroundImage = "url('Make Your Own Drug Name1.png')"; // Replace 'Make Your Own Drug Name1.png' with the path to your background image
 
-  // Replace the current body content with the section content including the background image
-  document.body.innerHTML = printContainer.innerHTML;
+    // Apply CSS for printing
+    printContainer.querySelector('.section').style.width = "6in";
+    printContainer.querySelector('.section').style.height = "4in";
+    printContainer.querySelector('.section').style.margin = "0";
+    printContainer.querySelector('.section').style.padding = "0";
 
-  // Trigger the print dialog
-  window.print();
+    // Replace the current body content with the section content including the background image
+    document.body.innerHTML = printContainer.innerHTML;
 
-  // Restore the original body content
-  document.body.innerHTML = originalContents;
-});
+    // Trigger the print dialog
+    window.print();
 
-  }
+    // Restore the original body content
+    document.body.innerHTML = originalContents;
+  });
+}
+
 
 
     const emailButton = document.getElementById('emailButton');
