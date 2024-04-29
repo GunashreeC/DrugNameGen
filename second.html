@@ -37,61 +37,73 @@
       background-color: #046f8b;
     }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-  }
-  .section {
-    width: 6in;
-    height: 4in;
-    background-image: url('Make Your Own Drug Name1.png'); /* Replace 'your-image.jpg' with the URL or path to your background image */
-    background-size: cover; /* Cover the entire section */
-    background-position: center; /* Center the background image */
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  .placeholder {
-    color: white; /* Placeholder text color */
-    font-size: 12px; /* Placeholder text size */
-    padding-left: 1%;
-    position: absolute;
-    top: 0; /* Adjust the value to move the placeholder higher or lower */
-    left: 0;
-    width: 3in;
-    height: 1in;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  @media print {
     body {
-      margin: 0; 
-      padding: 0; 
-      background: none;/* Set background color for printing */
-    }
-    .container {
-      display: none; /* Hide container content for printing */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
     }
     .section {
-      display: block !important; /* Ensure section is displayed for printing */
-      background-image: url('Make Your Own Drug Name1.png') !important; /* Specify the background image for printing */
-      background-size: cover !important; /* Ensure the background image covers the section */
-      background-position: center !important; /* Ensure the background image is centered */
-      background-repeat: no-repeat !important; /* Ensure the background image is not repeated */
+      width: 6in;
+      height: 4in;
+      background-size: cover; /* Cover the entire section */
+      background-position: center; /* Center the background image */
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
     }
+
+
     .placeholder {
-      display: block !important; /* Ensure placeholder content is displayed for printing */
+      color: white; /* Placeholder text color */
+      font-size: 12px; /* Placeholder text size */
+      padding-left: 1%;
+      position: absolute;
+      top: 0; /* Adjust the value to move the placeholder higher or lower */
+      left: 0;
+      width: 3in;
+      height: 1in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    #printButton, #emailButton {
-      display: none; /* Hide print and email buttons for printing */
-    }
+
+    @media print {
+      @page {
+    size: 6in 4in;
   }
+  body {
+    background: none; /* Set background color for printing */
+    display: block !important; /* Ensure section is displayed for printing */
+
+  }
+  .container {
+    display: none; /* Hide container content for printing */
+  }
+  .section {
+    display: block !important; /* Ensure section is displayed for printing */
+    background-size: 100%  !important; /* Reduce the size of the background image */
+    background-position: center !important; /* Center the background image */
+    background-repeat: no-repeat !important; /* Ensure the background image is not repeated */
+    margin: 0 !important; /* No margins */
+    padding: 0 !important; /* No padding */
+
+}
+
+
+  .placeholder {
+    display: block !important; /* Ensure placeholder content is displayed for printing */
+    padding-top: 0 !important; /* Add padding to create equal distance from the edges */
+
+  }
+  #printButton, #emailButton {
+    background: none; /* Set background color for printing */
+    display: none ; /* Ensure section is displayed for printing */
+  }
+}
+
   </style>
 </head>
 
@@ -100,57 +112,70 @@ body {
     <h1 id="greeting">Hi!</h1>
     <div class="section">
       <div class="placeholder">
-    <h2 id="generatedNames" style="background-color: #5a5a5a; display: inline-block;"></h2>
-  </br>
-  
-  </div>
-</div>
-</br></br></br>
-  <button id="printButton">Print</button>
+        <h2 id="generatedNames" style="background-color: #5a5a5a; display: inline-block;"></h2>
+      </div>
+    </div>
+    <br><br><br>
+    <button id="printButton">Print</button>
     <button id="emailButton">Email</button>
-
+  </div>
 
   <script>
-   
-   if (window.location.href.includes('second.html')) {
-  const greetingElement = document.getElementById('greeting');
-  const generatedNamesElement = document.getElementById('generatedNames');
+    var images = [
+        'image1.png',
+        'image2.png',
+        'image3.png'
+      ];
 
-  const username = localStorage.getItem('username');
-  const generatedFirstName = localStorage.getItem('generatedFirstName');
-  const generatedLastName = localStorage.getItem('generatedLastName');
+    // Get a random index to select a background image
+    var randomIndex = Math.floor(Math.random() * images.length);
 
-  greetingElement.textContent = `Hi, ${username}!`;
-  generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
+    // Set the background image of the section
+    document.querySelector('.section').style.backgroundImage = 'url(' + images[randomIndex] + ')';
 
-  document.getElementById("printButton").addEventListener("click", function() {
-    // Get the HTML content of the section with the background image
-    var sectionContent = document.querySelector('.section').outerHTML;
 
-    // Create a new div element to hold the printed content
-    var printContainer = document.createElement('div');
-    printContainer.innerHTML = sectionContent;
+if (window.location.href.includes('second.html')) {
+    const greetingElement = document.getElementById('greeting');
+    const generatedNamesElement = document.getElementById('generatedNames');
 
-    // Set background image to the new div element
-    printContainer.querySelector('.section').style.backgroundImage = "url('Make Your Own Drug Name1.png')"; // Replace 'Make Your Own Drug Name1.png' with the path to your background image
+    const username = localStorage.getItem('username');
+    const generatedFirstName = localStorage.getItem('generatedFirstName');
+    const generatedLastName = localStorage.getItem('generatedLastName');
 
-    // Apply CSS for printing
-    printContainer.querySelector('.section').style.width = "6in";
-    printContainer.querySelector('.section').style.height = "4in";
-    printContainer.querySelector('.section').style.margin = "0";
-    printContainer.querySelector('.section').style.padding = "0";
+    greetingElement.textContent = `Hi, ${username}!`;
+    generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
 
-    // Replace the current body content with the section content including the background image
-    document.body.innerHTML = printContainer.innerHTML;
+    // Moved randomIndex generation to a broader scope
+    var randomIndex = Math.floor(Math.random() * images.length);
 
-    // Trigger the print dialog
-    window.print();
+    document.getElementById("printButton").addEventListener("click", function() {
+        // Get the HTML content of the section with the background image
+        var sectionContent = document.querySelector('.section').outerHTML;
 
-    // Restore the original body content
-    document.body.innerHTML = originalContents;
-  });
+        // Create a new div element to hold the printed content
+        var printContainer = document.createElement('div');
+        printContainer.innerHTML = sectionContent;
+
+        // Set background image to the new div element
+        printContainer.querySelector('.section').style.backgroundImage = "url('" + images[randomIndex] + "')";
+        printContainer.querySelector('.section').style.backgroundSize = "cover"; // Image scales into the sheet
+        printContainer.querySelector('.section').style.backgroundPosition = "center"; // Image positioned in the center
+        printContainer.querySelector('.section').style.backgroundRepeat = "no-repeat"; // Prevent background image from repeating
+
+        // Apply CSS for printing
+        printContainer.style.width = "6in"; // 6 inches width
+        printContainer.style.height = "3in"; // 4 inches height
+        printContainer.style.margin = "0"; // No margin
+        printContainer.style.padding = "0"; // No padding
+        printContainer.style.border = "none"; // No border
+
+        // Replace the current body content with the section content including the background image
+        document.body.innerHTML = printContainer.outerHTML;
+
+        // Trigger the print dialog
+        window.print();
+    });
 }
-
 
 
     const emailButton = document.getElementById('emailButton');
@@ -168,8 +193,6 @@ body {
         // Open the default email client
         window.location.href = mailtoLink;
     });
-    
   </script>
-  
 </body>
 </html>

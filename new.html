@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Generator - Result</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #5EB6AB; 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      text-align: center;
+      padding: 100px;
+      color: white;
+      background-color: #5EB6AB; 
+    }
+
+    #printButton, #emailButton {
+      background-color: #046f8b;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+      align-items: center;
+    }
+
+    #printButton:hover, #emailButton:hover {
+      background-color: #046f8b;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .section {
+      width: 6in;
+      height: 4in;
+      background-image: url('Make Your Own Drug Name1.png'); /* Replace 'Make Your Own Drug Name1.png' with the URL or path to your background image */
+      background-size: cover; /* Cover the entire section */
+      background-position: center; /* Center the background image */
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .placeholder {
+      color: white; /* Placeholder text color */
+      font-size: 12px; /* Placeholder text size */
+      padding-left: 1%;
+      position: absolute;
+      top: 0; /* Adjust the value to move the placeholder higher or lower */
+      left: 0;
+      width: 3in;
+      height: 1in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media print {
+  @page {
+    size: 6in 4in;
+  }
+  body {
+    background: none; /* Set background color for printing */
+    display: block !important; /* Ensure section is displayed for printing */
+
+  }
+  .container {
+    display: none; /* Hide container content for printing */
+  }
+  .section {
+    display: block !important; /* Ensure section is displayed for printing */
+    background-image: url('Make Your Own Drug Name1.png') !important; /* Specify the background image for printing */
+    background-size: 100%  !important; /* Reduce the size of the background image */
+    background-position: center !important; /* Center the background image */
+    background-repeat: no-repeat !important; /* Ensure the background image is not repeated */
+    margin: 0 !important; /* No margins */
+    padding: 0 !important; /* No padding */
+}
+
+
+  .placeholder {
+    display: block !important; /* Ensure placeholder content is displayed for printing */
+    padding-top: 0 !important; /* Add padding to create equal distance from the edges */
+
+  }
+  #printButton, #emailButton {
+    background: none; /* Set background color for printing */
+    display: none ; /* Ensure section is displayed for printing */
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="greeting">Hi!</h1>
+    <div class="section">
+      <div class="placeholder">
+        <h2 id="generatedNames" style="background-color: #5a5a5a; display: inline-block;"></h2>
+      </div>
+    </div>
+    <br><br><br>
+    <button id="printButton">Print</button>
+    <button id="emailButton">Email</button>
+  </div>
+
+  <script>
+    // Create a new div element to hold the printed content
+    var printContainer = document.createElement('div');
+    // Set the background image to the new div element
+    printContainer.style.backgroundImage = "url('Make Your Own Drug Name1.png')"; // Replace 'Make Your Own Drug Name1.png' with the path to your background image
+    printContainer.style.backgroundSize = "cover"; // Image scales into the sheet
+    printContainer.style.backgroundPosition = "center"; // Image positioned in the center
+    printContainer.style.backgroundRepeat = "no-repeat"; // Prevent background image from repeating
+
+    // Apply CSS for printing
+    printContainer.style.width = "6in"; // 6 inches width
+    printContainer.style.height = "3.5in"; // 4 inches height
+    printContainer.style.margin = "0"; // No margin
+    printContainer.style.padding = "0"; // No padding
+    printContainer.style.border = "none"; // No border
+
+    // Replace the current body content with the section content including the background image
+    document.body.innerHTML = printContainer.outerHTML;
+
+    // Trigger the print dialog
+    window.print();
+</script>
+
+</body>
+</html>
