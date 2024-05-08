@@ -72,37 +72,36 @@
 
     @media print {
       @page {
-    size: 6in 4in;
-  }
-  body {
-    background: none; /* Set background color for printing */
-    display: block !important; /* Ensure section is displayed for printing */
+      size: 6in 4in;
+      }
+      body {
+        background: none; /* Set background color for printing */
+        display: block !important; /* Ensure section is displayed for printing */
 
-  }
-  .container {
-    display: none; /* Hide container content for printing */
-  }
-  .section {
-    display: block !important; /* Ensure section is displayed for printing */
-    background-size: 100%  !important; /* Reduce the size of the background image */
-    background-position: center !important; /* Center the background image */
-    background-repeat: no-repeat !important; /* Ensure the background image is not repeated */
-    margin: 0 !important; /* No margins */
-    padding: 0 !important; /* No padding */
+      }
+      .container {
+        display: none; /* Hide container content for printing */
+      }
+      .section {
+        display: block !important; /* Ensure section is displayed for printing */
+        background-size: 100%  !important; /* Reduce the size of the background image */
+        background-position: center !important; /* Center the background image */
+        background-repeat: no-repeat !important; /* Ensure the background image is not repeated */
+        margin: 0 !important; /* No margins */
+        padding: 0 !important; /* No padding */
+      }
 
-}
 
+      .placeholder {
+        display: block !important; /* Ensure placeholder content is displayed for printing */
+        padding-top: 0 !important; /* Add padding to create equal distance from the edges */
 
-  .placeholder {
-    display: block !important; /* Ensure placeholder content is displayed for printing */
-    padding-top: 0 !important; /* Add padding to create equal distance from the edges */
-
-  }
-  #printButton, #emailButton {
-    background: none; /* Set background color for printing */
-    display: none ; /* Ensure section is displayed for printing */
-  }
-}
+      }
+      #printButton, #emailButton {
+        background: none; /* Set background color for printing */
+        display: none ; /* Ensure section is displayed for printing */
+      }
+    }
 
   </style>
 </head>
