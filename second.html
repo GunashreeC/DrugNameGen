@@ -58,7 +58,6 @@
 
     .placeholder {
       color: white; /* Placeholder text color */
-      font-size: 12px; /* Placeholder text size */
       padding-left: 1%;
       position: absolute;
       top: 0; /* Adjust the value to move the placeholder higher or lower */
@@ -140,10 +139,26 @@ if (window.location.href.includes('second.html')) {
 
     const username = localStorage.getItem('username');
     const generatedFirstName = localStorage.getItem('generatedFirstName');
+    const generatedMiddleName = localStorage.getItem('generatedMiddleName').toLowerCase();;
     const generatedLastName = localStorage.getItem('generatedLastName');
 
+    generatedNamesElement.style.fontFamily = "sans-serif"; // Change font to sans-serif
+    generatedNamesElement.style.fontSize = "20px"; // Increase font size to 20px
+
+
+
+    const sentences = [
+        "Ask your doctor about: ",
+        "8 out of 10 doctors recommend: ",
+        "Now Dispensing: "
+    ];
+
+    const randomsen = Math.floor(Math.random() * sentences.length);
+    const randomSentence = sentences[randomsen];
     greetingElement.textContent = `Hi, ${username}!`;
-    generatedNamesElement.textContent = `Your Cancer Drug Name is: ${generatedFirstName} ${generatedLastName}`;
+    generatedNamesElement.innerHTML = `<span style="font-size: 12px">${randomSentence}</span> ${generatedFirstName}${generatedMiddleName} ${generatedLastName}`;
+
+    
 
     // Moved randomIndex generation to a broader scope
     var randomIndex = Math.floor(Math.random() * images.length);

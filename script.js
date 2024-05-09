@@ -3,11 +3,13 @@ function generateNames() {
   const lastName = document.getElementById('lastName').value;
   const email = document.getElementById('email').value;
 
-  const generatedFirstName = generateCancerDrugName();
+  const generatedFirstName = lastName;
+  const generatedMiddleName = generateCancerDrugName();
   const generatedLastName = generateCancerDrugName();
 
   localStorage.setItem('username', firstName);
   localStorage.setItem('generatedFirstName', generatedFirstName);
+  localStorage.setItem('generatedMiddleName', generatedMiddleName);
   localStorage.setItem('generatedLastName', generatedLastName);
 
   window.location.href = 'second.html';
@@ -16,18 +18,18 @@ function generateNames() {
     
   function generateCancerDrugName() {
     const drugNames = ['ABVD',
-    'AC','ATO','ATRA','Abemaciclib (Verzenois)','Abiraterone (Zytiga)','Abraxane','Abstral','Acalabrutinib','Actimorph','Actinomycin D','Actiq','Adriamycin','Afatinib','Afinitor',
+    'Abemaciclib','Abiraterone','Abraxane','Abstral','Acalabrutinib','Actimorph','Actinomycin','Actiq','Adriamycin','Afatinib','Afinitor',
     'Aldara','Alectinib','Alectinib','Alemtuzumab','Alkeran','Anastrazole (Arimidex)','Apalutamide','Ara C','Arimidex','Aromasin',
     'Tretinoin','Asparaginase','Avelumab','Axitinib','Azacitidine',
 
-    'BEACOPP','BEAM','Bendamustine','Besponsa','Bevacizumab','Bexarotene','Bicalutamide','Bleomycin','Bleomycin','Blinatumomab', 'Bortezomib',
+    'Bendamustine','Besponsa','Bevacizumab','Bexarotene','Bicalutamide','Bleomycin','Bleomycin','Blinatumomab', 'Bortezomib',
     'Bortezomib','Bortezomib','Bortezomib','Bosulif','Bosutinib','Brentuximab','Brigatinib','Buserelin','Busulfan', 'Cabazitaxel',
 
     'Cabometyx','Cabozantinib','Caelyx','Calpol','Campto','Capecitabine','Caprelsa','CarboTaxol','Carboplatin','Carfilzomib','Carmustine','Casodex','Cemiplimab',
     'Ceritinib','Cetuximab','Chlorambucil','Cisplatin','Cladribine','Clasteon','Co-codamol','Cometriq','Cosmegen','Crisantaspase','Crizotinib','Cyclophosphamide',
     'Cyprostat','Cyproterone acetate','Cytarabine','Cytosine arabinoside',
 
-    'Dabrafenib','Dacarbazine','Dacomitinib','Dactinomycin' ,'Daratumumab','Darolutamide' ,'Darzalex','Dasatinib','Daunorubicin','Decapeptyl SR',
+    'Dabrafenib','Dacarbazine','Dacomitinib','Dactinomycin' ,'Daratumumab','Darolutamide' ,'Darzalex','Dasatinib','Daunorubicin','Decapeptyl',
     'Degarelix','Denosumab','Dexamethasone','Diamorphine','Disodium pamidronate','Disprol','Docetaxel' ,'Dostarlimab','Doxifos','Doxorubicin','Durogesic',
     'Durvalumab' ,
 
