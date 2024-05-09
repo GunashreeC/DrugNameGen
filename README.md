@@ -1,4 +1,4 @@
-# DrugNameGen
+# DrugNameGenerator
 
 This is a website created for the UIC booth in American Society of Clinical Oncology. 
 
