@@ -156,7 +156,7 @@ if (window.location.href.includes('second.html')) {
     const randomsen = Math.floor(Math.random() * sentences.length);
     const randomSentence = sentences[randomsen];
     greetingElement.textContent = `Hi, ${username}!`;
-    generatedNamesElement.innerHTML = `<span style="font-size: 12px">${randomSentence}</span> ${generatedFirstName}${generatedMiddleName} ${generatedLastName}`;
+    generatedNamesElement.innerHTML = `<span style="font-size: 12px">${randomSentence}</span><br>${generatedFirstName}${generatedMiddleName} ${generatedLastName}`;
 
     
 
