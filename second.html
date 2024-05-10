@@ -62,7 +62,7 @@
       position: absolute;
       top: 0; /* Adjust the value to move the placeholder higher or lower */
       left: 0;
-      width: 3in;
+      width: 3.5in;
       height: 1in;
       display: flex;
       align-items: center;
@@ -111,7 +111,7 @@
     <h1 id="greeting">Hi!</h1>
     <div class="section">
       <div class="placeholder">
-        <h2 id="generatedNames" style="background-color: #5a5a5a; display: inline-block;"></h2>
+        <h2 id="generatedNames" style="display: inline-block;"></h2>
       </div>
     </div>
     <br><br><br>
@@ -143,7 +143,7 @@ if (window.location.href.includes('second.html')) {
     const generatedLastName = localStorage.getItem('generatedLastName');
 
     generatedNamesElement.style.fontFamily = "sans-serif"; // Change font to sans-serif
-    generatedNamesElement.style.fontSize = "20px"; // Increase font size to 20px
+    generatedNamesElement.style.fontSize = "23px"; // Increase font size to 20px
 
 
 
@@ -156,7 +156,7 @@ if (window.location.href.includes('second.html')) {
     const randomsen = Math.floor(Math.random() * sentences.length);
     const randomSentence = sentences[randomsen];
     greetingElement.textContent = `Hi, ${username}!`;
-    generatedNamesElement.innerHTML = `<span style="font-size: 12px">${randomSentence}</span><br>${generatedFirstName}${generatedMiddleName} ${generatedLastName}`;
+    generatedNamesElement.innerHTML = `<span style="font-size: 14px">${randomSentence}</span><br>${generatedFirstName}${generatedMiddleName} ${generatedLastName}`;
 
     
 
