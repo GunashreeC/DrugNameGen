@@ -153,11 +153,15 @@ if (window.location.href.includes('second.html')) {
         "Now Dispensing: "
     ];
 
+
     const randomsen = Math.floor(Math.random() * sentences.length);
     const randomSentence = sentences[randomsen];
     greetingElement.textContent = `Hi, ${username}!`;
-    generatedNamesElement.innerHTML = `<span style="font-size: 14px">${randomSentence}</span><br>${generatedFirstName}${generatedMiddleName} ${generatedLastName}`;
+    const middleNameLength = generatedMiddleName.length;
+    const middleNameHalfIndex = Math.ceil(middleNameLength / 2);
+    const secondHalfMiddleName = generatedMiddleName.substring(middleNameHalfIndex);
 
+    generatedNamesElement.innerHTML = `<span style="font-size: 14px">${randomSentence}</span><br>${generatedFirstName}${secondHalfMiddleName} ${generatedLastName}`;
     
 
     // Moved randomIndex generation to a broader scope
